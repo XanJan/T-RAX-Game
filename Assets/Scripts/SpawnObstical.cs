@@ -6,10 +6,13 @@ public class SpawnObstical : MonoBehaviour
 {
     public List<GameObject> obsticals;
     public GameObject spawnPosition;
+    private float addTime = 0f;
     // Start is called before the first frame update
     void Start()
     {
+        GameEvents.current.onSpeedChange += UpdateSpeed;
         Spawn();
+
     }
 
     // Update is called once per frame
@@ -26,7 +29,13 @@ public class SpawnObstical : MonoBehaviour
 
     private void Spawn()
     {
-        Instantiate(obsticals[Random.Range(0, obsticals.Count)], spawnPosition.transform);
+        GameObject i = Instantiate(obsticals[Random.Range(0, obsticals.Count)], spawnPosition.transform);
+        i.GetComponent<ObsticalController>().setSpeed(addTime);
         StartCoroutine(RandomSpawnTime());
+    }
+
+    private void UpdateSpeed()
+    {
+        addTime += 1f; 
     }
 }

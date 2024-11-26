@@ -5,8 +5,7 @@ using UnityEngine;
 using UnityEngine.SocialPlatforms.Impl;
 using UnityEngine.Windows;
 using TMPro;
-
-
+using System.Runtime.CompilerServices;
 
 public class TrainController : MonoBehaviour
 {
@@ -15,7 +14,6 @@ public class TrainController : MonoBehaviour
     public List<GameObject> vagnar;
     public List<GameObject> charactersStand;
     public List<GameObject> characters;
-    public GameManager gameManager;
 
 
     private BoxCollider2D collider;
@@ -24,6 +22,9 @@ public class TrainController : MonoBehaviour
     void Start()
     {
         collider = GetComponent<BoxCollider2D>();
+
+
+        
     }
 
     // Update is called once per frame
@@ -56,8 +57,9 @@ public class TrainController : MonoBehaviour
             
         }
 
-        if(collision.gameObject.layer == LayerMask.NameToLayer("Obstical")){
-            gameManager.GameOver();
+        if(collision.gameObject.layer == LayerMask.NameToLayer("Obstacle")){
+            GameEvents.current.ObstacleTriggerEnter();
+            Destroy(collision.gameObject);
         }
 
     }
@@ -98,6 +100,7 @@ public class TrainController : MonoBehaviour
         }
 
     }
+
 
     IEnumerator WaitTimeCoroutine(int i)
     {
