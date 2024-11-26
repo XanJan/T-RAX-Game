@@ -1,5 +1,5 @@
 <h1>T-RAX Cortege Game</h1>
-![StartPage](https://github.com/XanJan/T-RAX-Game/blob/main/Images/StartPage.jpg)
+![StartPage](./Images/StartPage.jpg)
 <hr><p>This game is a fun variation of the classic Google Dino game that I created for my own enjoyment. The mascot of the student association that inspired the game is a dinosaur, which made it a perfect theme choice</p><h2>General Information</h2>
 <hr><ul>
 <li>A remade of the classical google offline dino game.</li>
